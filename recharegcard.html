@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <select name="" id="network">
+        <option value=""> CHOOSE PROVIDER</option>
+        <option value="MTN"> MTN</option>
+        <option value="GLO"> GLO </option>
+        <option value="9MOBILE">9MOBILE </option>
+        <option value="AIRTEL">AIRTEL</option>
+    </select>
+
+    <select name="" id="amount">
+        <option value=""> CHOOSE AMOUNT</option>
+        <option value="100">100</option>
+        <option value="200">200</option>
+        <option value="500">500</option>
+        <option value="1000">1000</option>
+    </select>
+
+
+    <button onclick="generate()"> generate pin </button>
+    <p id="pin"> </p>
+
+
+    <input type="text" placeholder="*311*...#" id="inputpin"> 
+    <button onclick="load()"> load rechargecard</button>
+    <p id="result"></p>
+
+
+</body>
+
+</html>
+<script>
+    function generate() {
+        let pin = ''
+        if (network.value ==='' && amount.value === '') {
+           return alert('service provider and amount must be selected. Thank you .')
+            
+        }
+        //  else if (network.value === 'network' && amount.value === '') {
+        //     return alert('Amount can not be empty. Please select an amount')
+            
+        // } else {
+        //     (network.value === '' && amount.value === 'amount')
+        //     return alert('Service provider can not be empty. Please select a provider. thanks')
+        // }
+        for (let index = 0; index < 12; index++) {
+            let random = Math.floor(Math.random() * 10)
+            pin = pin + random
+        }
+        document.getElementById('pin').innerHTML = pin
+        console.log(pin);
+    }
+    function load() {
+       let thePin = inputpin.value;
+
+        if (thePin === '') {
+          return alert('The above generated pin should be inputed. Input can not be empty')
+        
+        }
+        else if (thePin === 'pin') {
+            return alert('you have succefully loaded ${amount.value} ${provider.value} card')
+            
+        }
+    }
+
+
+
+
+
+</script>
